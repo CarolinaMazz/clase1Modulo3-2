@@ -68,7 +68,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detalle"{
             let detalleViewControler = segue.destination as! DetalleViewController
-            detalleViewControler.publicacion = sender as! Publicaciones	
+            detalleViewControler.publicacion = sender as! Publicaciones
         }
     }
     

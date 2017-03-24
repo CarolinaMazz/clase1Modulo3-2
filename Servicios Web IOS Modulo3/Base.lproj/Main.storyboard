@@ -50,7 +50,6 @@
                                         <connections>
                                             <outlet property="lblTitulo" destination="Kgr-BT-Ti3" id="GO7-Se-W48"/>
                                             <outlet property="txtContenido" destination="tND-Ya-LpV" id="5jF-Zs-Xla"/>
-                                            <segue destination="2Cm-68-dYi" kind="show" identifier="detalle" id="OYB-My-RXe"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -84,6 +83,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="SSA-ma-GZt" id="HWR-xB-dl2"/>
+                        <segue destination="2Cm-68-dYi" kind="show" id="Xgg-Th-7Cu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
