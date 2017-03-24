@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    var publicaciones = Array<Publicaciones>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +21,61 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func obtenerPublicaciones(){
+        
+        publicaciones.removeAll()
+        
+        for i in 1...8 {
+            
+            let publicacion = Publicaciones()
+            
+            publicacion.titulo = "Carro \(i)"
+            publicacion.contenido = "Contenido \(i)"
+            publicaciones.append(publicacion)
+            
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return publicaciones.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "celda", for: indexPath) as! PublicacionesCell
+        
+        let indice = indexPath.row
+        let publicacion = publicaciones[indice]
+        
+        cell.lblTitulo.text = publicacion.titulo
+        cell.txtContenido.text = publicacion.contenido
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let publicacion = publicaciones[indexPath.row]
+        self.performSegue(withIdentifier: "detalle", sender: publicacion)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detalle"{
+            let detalleViewControler = segue.destination as! DetalleViewController
+            detalleViewControler.publicacion = sender as! Publicaciones	
+        }
+    }
+    
+    
+    @IBAction func btnRefreshTouch(_ sender: UIBarButtonItem) {
+        self.obtenerPublicaciones()
+        tableView.reloadData()
     }
 
 
