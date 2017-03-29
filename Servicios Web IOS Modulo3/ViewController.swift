@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -27,7 +28,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         publicaciones.removeAll()
         
+        let hud = MBProgressHUD(view: self.view)
         
+        hud.show(animated: true)
+        hud.label.text("cargando")
+        
+        PublicacionesWebservice.ListarTodos{ (resultado) in
+            self.publicaciones = resultado
+            self.tableView.reloadData()
+        }
         
         /*for i in 1...8 {
             
@@ -38,6 +47,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             publicaciones.append(publicacion)
             
         }*/
+        hud.hide(animated: true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
