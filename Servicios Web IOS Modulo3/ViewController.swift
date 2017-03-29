@@ -27,7 +27,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         publicaciones.removeAll()
         
-        for i in 1...8 {
+        
+        
+        /*for i in 1...8 {
             
             let publicacion = Publicaciones()
             
@@ -35,7 +37,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             publicacion.contenido = "Contenido \(i)"
             publicaciones.append(publicacion)
             
-        }
+        }*/
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

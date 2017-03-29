@@ -1,0 +1,6 @@
+framework module Pods_Servicios_Web_IOS_Modulo3 {
+  umbrella header "Pods-Servicios Web IOS Modulo3-umbrella.h"
+
+  export *
+  module * { export * }
+}
