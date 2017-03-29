@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let hud = MBProgressHUD(view: self.view)
         
         hud.show(animated: true)
-        hud.label.text("cargando")
+        //hud.label.text("cargando")
         
         PublicacionesWebservice.ListarTodos{ (resultado) in
             self.publicaciones = resultado
